@@ -46,4 +46,9 @@ app.listen(port,() => {
   setInterval(function(){collectionSync.run()}, 10000);
 });
 
+process.on('uncaughtException', function (err) {
+    appLogger.error('An uncaught error occurred!');
+    appLogger.error(err.stack);
+})
+
 module.exports = app;
